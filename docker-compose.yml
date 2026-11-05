@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  green-ai-web:
+    build: .
+    container_name: green-ai-streamlit
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mapping folder lokal ke dalam container (Hot-Reload)
+      - .:/app
+    environment:
+      # Memastikan Streamlit mendeteksi perubahan file di VS Code
+      - STREAMLIT_SERVER_FILE_WATCHER_TYPE=poll
